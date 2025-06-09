@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/option_dog"
+        android:title="🐕 Pas" />
+    <item
+        android:id="@+id/option_cat"
+        android:title="🐱 Mačka" />
+    <item
+        android:id="@+id/option_fish"
+        android:title="🐠 Riba" />
+    <item
+        android:id="@+id/option_parrot"
+        android:title="🦜 Papagaj" />
+    <item
+        android:id="@+id/option_turtle"
+        android:title="🐢 Kornjača" />
+</menu>

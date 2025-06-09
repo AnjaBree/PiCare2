@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "843770214664",
+    "project_id": "picare-c4e0f",
+    "storage_bucket": "picare-c4e0f.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:843770214664:android:c56e0549f8748fc39014bd",
+        "android_client_info": {
+          "package_name": "com.example.picare"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQIRIgR0gBgvTFIAnSeSN8aV83w7kbPxo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
