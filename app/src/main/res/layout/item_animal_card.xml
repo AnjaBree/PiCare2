@@ -1,98 +1,107 @@
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/animalCardView"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
-    android:elevation="6dp"
-    app:cardCornerRadius="20dp"
-    app:cardElevation="6dp">
+    app:cardCornerRadius="16dp"
+    app:cardElevation="4dp"
+    app:strokeColor="#E0E0E0"
+    app:strokeWidth="1dp"
+    android:backgroundTint="#FFFFFF">
 
-    <LinearLayout
+    <!-- Use ConstraintLayout for flexible positioning of avatar, info, and action -->
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/pastel_orange"
-        android:orientation="horizontal"
-        android:padding="20dp">
+        android:padding="16dp">
 
-        <!-- Pet Avatar -->
-        <androidx.cardview.widget.CardView
+        <!-- Pet Avatar Background (circular) -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/avatarBackground"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:layout_marginEnd="16dp"
             app:cardCornerRadius="30dp"
-            app:cardElevation="4dp">
+            app:cardElevation="2dp"
+            app:cardBackgroundColor="#FFE5CC"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
 
             <ImageView
                 android:id="@+id/petAvatar"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="#FFE5CC"
                 android:padding="12dp"
                 android:src="@drawable/ic_add_pet"
-                app:tint="#FF8C42" />
+                app:tint="#FF8C42"
+                android:scaleType="centerCrop"
+                tools:ignore="ContentDescription" />
+        </com.google.android.material.card.MaterialCardView>
 
-        </androidx.cardview.widget.CardView>
+        <!-- Delete Button as a circular icon button -->
+        <ImageButton
+            android:id="@+id/buttonDelete"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:backgroundTint="#FF8C42"
+            android:scaleType="centerInside"
+            android:padding="8dp"
+            android:background="@drawable/rounded_orange_background"
+            android:src="@drawable/ic_trash"
+            app:tint="#FFFFFF"
+            android:contentDescription="Delete pet"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/avatarBackground"
+            app:layout_constraintBottom_toBottomOf="@id/avatarBackground" />
 
-        <!-- Pet Info -->
+
+        <!-- Pet Info: name, type, description -->
         <LinearLayout
-            android:layout_width="251dp"
+            android:id="@+id/infoLayout"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_marginStart="16dp"
+            app:layout_constraintStart_toEndOf="@id/avatarBackground"
+            app:layout_constraintTop_toTopOf="@id/avatarBackground"
+            app:layout_constraintBottom_toBottomOf="@id/avatarBackground"
+            app:layout_constraintEnd_toStartOf="@id/buttonDelete">
 
+            <!-- Pet Name -->
             <TextView
                 android:id="@+id/animalName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/quicksand_bold"
                 android:text="Buddy"
+                android:fontFamily="@font/quicksand_bold"
                 android:textColor="#2D2D2D"
                 android:textSize="18sp" />
 
+            <!-- Pet Type -->
             <TextView
                 android:id="@+id/animalType"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
-                android:fontFamily="@font/quicksand_medium"
                 android:text="Golden Retriever"
+                android:fontFamily="@font/quicksand_medium"
                 android:textColor="#FF8C42"
                 android:textSize="14sp" />
 
+            <!-- Pet Description -->
             <TextView
                 android:id="@+id/animalDescription"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:fontFamily="@font/quicksand_regular"
                 android:text="Friendly and energetic"
+                android:fontFamily="@font/quicksand_regular"
                 android:textColor="#666666"
                 android:textSize="12sp" />
-
         </LinearLayout>
 
-        <!-- Action Buttons -->
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/buttonDelete"
-                style="@style/Widget.MaterialComponents.Button.TextButton"
-                android:layout_width="40dp"
-                android:layout_height="70dp"
-                android:insetLeft="0dp"
-                android:insetTop="0dp"
-                android:insetRight="0dp"
-                android:insetBottom="0dp"
-                android:text="🗑️"
-                android:textSize="16sp"
-                app:cornerRadius="20dp" />
-
-        </LinearLayout>
-
-    </LinearLayout>
-
-</androidx.cardview.widget.CardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>

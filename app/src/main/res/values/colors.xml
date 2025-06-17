@@ -1,17 +1,25 @@
-<?xml version="1.0" encoding="utf-8"?>
+<!-- res/values/colors.xml -->
 <resources>
-    <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#FF6200EE</color>
-    <color name="purple_700">#FF3700B3</color>
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <!-- Orange palette -->
+    <color name="orange_200">#FFE0B2</color>
+    <color name="orange_500">#FF8C42</color> <!-- same as your FAB -->
+    <color name="orange_700">#E67722</color>
+
+    <!-- Neutrals -->
+    <color name="background">#FFF8F0</color>  <!-- home bg -->
+    <color name="surface">#FFFFFF</color>
+    <color name="on_background">#2D2D2D</color> <!-- your TextView color -->
+    <color name="on_surface">#2D2D2D</color>
+
+    <!-- Status bar (darker) -->
+    <color name="status_bar">#E67722</color>
+
+    <!-- Optional extras -->
     <color name="brown">#25190D</color>
     <color name="brown1">#8A6955</color>
-    <color name="background">#D3B7B3</color>
     <color name="pastel_orange">#FFEBCB</color>
     <color name="pastel_green">#D4F7DC</color>
-    <color name="d4f7dc">#D4F7DC</color>
 
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
 </resources>

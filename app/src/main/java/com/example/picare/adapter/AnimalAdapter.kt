@@ -4,10 +4,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.picare.R
-import com.example.picare.ui.home.Animal
+import com.example.picare.model.Animal
 
 class AnimalAdapter(
     private val animals: List<Animal>,
@@ -19,7 +20,7 @@ class AnimalAdapter(
         private val nameTv: TextView = itemView.findViewById(R.id.animalName)
         private val typeTv: TextView = itemView.findViewById(R.id.animalType)
         private val descTv: TextView = itemView.findViewById(R.id.animalDescription)
-        private val deleteBtn: Button = itemView.findViewById(R.id.buttonDelete)
+        private val deleteBtn: ImageButton = itemView.findViewById(R.id.buttonDelete)
 
         fun bind(animal: Animal) {
             nameTv.text = animal.name

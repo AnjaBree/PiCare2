@@ -1,56 +1,108 @@
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    style="@style/PiCare.CardView"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/cardView"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
-    android:elevation="4dp"
+    app:cardBackgroundColor="#FFFFFF"
     app:cardCornerRadius="16dp"
-    app:cardElevation="4dp">
+    app:cardElevation="4dp"
+    app:strokeColor="#E0E0E0"
+    app:strokeWidth="1dp">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
+        android:background="#FFFFFF"
         android:padding="16dp">
 
-        <!-- Reminder Content -->
-        <LinearLayout
+        <!-- Optional leading icon: e.g., reminder icon -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/iconBackground"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            app:cardBackgroundColor="#FF8C42"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/reminderIcon"
+                tools:ignore="ContentDescription"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_bell"
+                app:tint="#FFFFFF" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Title Text -->
+        <TextView
+            android:id="@+id/title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical">
+            android:layout_marginStart="12dp"
+            android:fontFamily="@font/quicksand_bold"
+            android:text="Feed Buddy"
+            android:textColor="#2D2D2D"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toStartOf="@id/buttonComplete"
+            app:layout_constraintStart_toEndOf="@id/iconBackground"
+            app:layout_constraintTop_toTopOf="@id/iconBackground" />
 
-            <TextView
-                android:id="@+id/title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Feed Buddy"
-                android:textColor="@color/white"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+        <!-- Description / subtitle -->
+        <TextView
+            android:id="@+id/description"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/quicksand_regular"
+            android:text="Morning meal time"
+            android:textColor="#666666"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="@id/title"
+            app:layout_constraintStart_toStartOf="@id/title"
+            app:layout_constraintTop_toBottomOf="@id/title" />
 
-            <TextView
-                android:id="@+id/description"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:text="Morning meal time"
-                android:textColor="@color/background"
-                android:textSize="14sp" />
+        <!-- Optional: Time text on the right of description -->
+        <TextView
+            android:id="@+id/textTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/quicksand_medium"
+            android:text="08:00"
+            android:textColor="#FF8C42"
+            android:textSize="14sp"
+            app:layout_constraintBaseline_toBaselineOf="@id/description"
+            app:layout_constraintEnd_toStartOf="@id/buttonComplete"
+            app:layout_constraintTop_toBottomOf="@id/title" />
 
-        </LinearLayout>
-
-        <!-- Complete Button - Keep as ImageButton to match your code -->
         <ImageButton
             android:id="@+id/buttonComplete"
-            android:layout_width="35dp"
-            android:layout_height="34dp"
-            android:background="?attr/selectableItemBackgroundBorderless"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/circle_background"
             android:contentDescription="Mark as Complete"
-            android:src="@drawable/ic_green_check" />
+            android:src="@drawable/ic_check"
+            app:tint="#4CAF50"
+            android:padding="8dp"
+            android:scaleType="centerInside"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
-    </LinearLayout>
 
-</androidx.cardview.widget.CardView>
+        <!-- Ripple for complete button -->
+        <!-- Wrap the MaterialCardView in a clickable area or set clickable on the card: -->
+        <!-- In code: findViewById<MaterialCardView>(R.id.buttonComplete).setClickable(true) and set OnClickListener -->
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>

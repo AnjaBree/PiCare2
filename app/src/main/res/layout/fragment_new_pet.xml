@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/frameNewPet"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFF8F0"
+    android:padding="16dp">
+
+    <!-- STEP 1: Select Type (Grid) -->
+    <LinearLayout
+        android:id="@+id/step1Layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="visible">
+
+        <TextView
+            android:id="@+id/textStep1Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Izaberite vrstu ljubimca"
+            android:fontFamily="@font/quicksand_bold"
+            android:textSize="20sp"
+            android:textColor="#2D2D2D" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="16dp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewPetTypes"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:clipToPadding="false"
+            android:paddingBottom="16dp"
+            android:overScrollMode="never" />
+    </LinearLayout>
+
+    <!-- STEP 2: Enter Name & Description -->
+    <ScrollView
+        android:id="@+id/step2Layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:id="@+id/containerStep2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textStep2Title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Unesite detalje"
+                android:fontFamily="@font/quicksand_bold"
+                android:textSize="20sp"
+                android:textColor="#2D2D2D" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="16dp" />
+
+            <TextView
+                android:id="@+id/textSelectedType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Vrsta: Pas"
+                android:fontFamily="@font/quicksand_medium"
+                android:textSize="16sp"
+                android:textColor="#FF8C42" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="24dp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layoutInputName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                app:boxBackgroundMode="outline"
+                app:boxStrokeColor="#FF8C42"
+                app:boxStrokeWidthFocused="2dp"
+                app:boxCornerRadiusTopStart="8dp"
+                app:boxCornerRadiusTopEnd="8dp"
+                app:boxCornerRadiusBottomStart="8dp"
+                app:boxCornerRadiusBottomEnd="8dp"
+                app:hintEnabled="true"
+                android:hint="Ime ljubimca">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/inputName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/quicksand_regular"
+                    android:textSize="14sp"
+                    android:inputType="textPersonName"
+                    android:padding="8dp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="16dp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layoutInputDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                app:boxBackgroundMode="outline"
+                app:boxStrokeColor="#FF8C42"
+                app:boxStrokeWidthFocused="2dp"
+                app:boxCornerRadiusTopStart="8dp"
+                app:boxCornerRadiusTopEnd="8dp"
+                app:boxCornerRadiusBottomStart="8dp"
+                app:boxCornerRadiusBottomEnd="8dp"
+                app:hintEnabled="true"
+                android:hint="Opis ljubimca">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/inputDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/quicksand_regular"
+                    android:textSize="14sp"
+                    android:inputType="textMultiLine"
+                    android:minLines="3"
+                    android:padding="8dp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="24dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/buttonBack"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Nazad"
+                    android:fontFamily="@font/quicksand_medium"
+                    android:textColor="#FF8C42"
+                    android:backgroundTint="#FFFFFF"
+                    app:strokeWidth="1dp"
+                    app:strokeColor="#FF8C42"
+                    android:padding="12dp"
+                    android:textSize="16sp"
+                    app:cornerRadius="24dp" />
+
+                <View
+                    android:layout_width="16dp"
+                    android:layout_height="match_parent" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/buttonSavePet"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Sačuvaj"
+                    android:fontFamily="@font/quicksand_bold"
+                    android:textColor="#FFFFFF"
+                    android:backgroundTint="#FF8C42"
+                    android:padding="12dp"
+                    android:textSize="16sp"
+                    app:cornerRadius="24dp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="32dp" />
+        </LinearLayout>
+    </ScrollView>
+
+</FrameLayout>

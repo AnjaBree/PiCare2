@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardPetType"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    app:cardBackgroundColor="#FFFFFF"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="2dp"
+    app:strokeColor="#E0E0E0"
+    app:strokeWidth="1dp">
+
+    <ImageView
+        android:id="@+id/imageTypeIcon"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:contentDescription="Pet type icon"
+        android:padding="16dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/ic_dog"
+        app:tint="#FF8C42" />
+</com.google.android.material.card.MaterialCardView>

@@ -1,16 +1,30 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Theme.PiCare" parent="Theme.AppCompat.DayNight.NoActionBar">
-        <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_500</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
-        <item name="colorOnPrimary">@color/white</item>
-        <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/teal_200</item>
-        <item name="colorSecondaryVariant">@color/teal_700</item>
-        <item name="colorOnSecondary">@color/black</item>
-        <!-- Status bar color. -->
-        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
-        <!-- Customize your theme here. -->
+    <style name="Theme.PiCare" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Primary brand color -->
+        <item name="colorPrimary">@color/orange_500</item>
+        <item name="colorPrimaryVariant">@color/orange_700</item>
+        <item name="colorOnPrimary">@color/on_surface</item>
+
+        <!-- Secondary brand color -->
+        <item name="colorSecondary">@color/orange_200</item>
+        <item name="colorSecondaryVariant">@color/orange_500</item>
+        <item name="colorOnSecondary">@color/on_surface</item>
+
+        <!-- Backgrounds and surfaces -->
+        <item name="android:colorBackground">@color/white</item> <!-- Valid -->
+        <item name="colorSurface">@color/white</item>
+        <item name="colorSurfaceVariant">@color/white</item>
+        <item name="colorOnBackground">@color/on_surface</item>
+        <item name="colorOnSurface">@color/on_surface</item>
+
+        <!-- Status bar -->
+        <item name="android:statusBarColor">@color/orange_700</item>
+
+        <!-- Disable elevation overlay so white stays white -->
+        <item name="elevationOverlayEnabled">false</item>
+
+        <!-- Shape appearances -->
+        <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.MaterialComponents.SmallComponent</item>
+        <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.MaterialComponents.MediumComponent</item>
     </style>
 </resources>

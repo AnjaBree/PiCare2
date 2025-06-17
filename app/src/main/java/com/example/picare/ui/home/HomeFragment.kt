@@ -15,7 +15,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.picare.R
 import com.example.picare.databinding.FragmentHomeBinding
 import android.util.Log
+import androidx.navigation.fragment.findNavController
 import com.example.picare.adapter.AnimalAdapter
+import com.example.picare.model.Animal
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 import java.util.Calendar
@@ -30,37 +32,6 @@ class HomeFragment : Fragment() {
     private lateinit var db: FirebaseFirestore
     private lateinit var adapter: AnimalAdapter
     private val animalsList = mutableListOf<Animal>()
-
-    private fun showAnimalTypeMenu(anchor: View) {
-        val popupMenu = androidx.appcompat.widget.PopupMenu(requireContext(), anchor)
-        popupMenu.menuInflater.inflate(R.menu.animal_menu, popupMenu.menu)
-        popupMenu.setOnMenuItemClickListener { menuItem ->
-            when (menuItem.itemId) {
-                R.id.option_dog -> {
-                    showAddAnimalDialog("Pas")
-                    true
-                }
-                R.id.option_cat -> {
-                    showAddAnimalDialog("Macka")
-                    true
-                }
-                R.id.option_fish -> {
-                    showAddAnimalDialog("Riba")
-                    true
-                }
-                R.id.option_parrot -> {
-                    showAddAnimalDialog("Papagaj")
-                    true
-                }
-                R.id.option_turtle -> {
-                    showAddAnimalDialog("Kornjaca")
-                    true
-                }
-                else -> false
-            }
-        }
-        popupMenu.show()
-    }
 
 
     override fun onCreateView(
@@ -92,57 +63,11 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         view?.let {
             binding.floatingActionButton.setOnClickListener {
-                showAnimalTypeMenu(it)
+                findNavController().navigate(R.id.action_navigation_home_to_newPetFragment)
             }
         }
     }
 
-    private fun showAddAnimalDialog(animalType: String) {
-        val dialogView = layoutInflater.inflate(R.layout.dialog_animal_input, null)
-
-        val editName = dialogView.findViewById<EditText>(R.id.inputName)
-        val editDescription = dialogView.findViewById<EditText>(R.id.inputDescription)
-        val buttonAdd = dialogView.findViewById<Button>(R.id.buttonAdd) // Your custom button
-
-        val dialog = AlertDialog.Builder(requireActivity())
-            .setView(dialogView)
-            .setCancelable(true)
-            .create()
-
-        dialog.show()
-
-        buttonAdd.setOnClickListener {
-            val name = editName.text.toString().trim()
-            val description = editDescription.text.toString().trim()
-
-            if (name.isEmpty()) {
-                Toast.makeText(requireContext(), "Please enter name", Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
-            }
-            if (description.isEmpty()) {
-                Toast.makeText(requireContext(), "Please enter description", Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
-            }
-
-            val animalData = hashMapOf(
-                "type" to animalType,
-                "name" to name,
-                "description" to description,
-                "timestamp" to com.google.firebase.Timestamp.now()
-            )
-
-            db.collection("animals")
-                .add(animalData)
-                .addOnSuccessListener {
-                    Toast.makeText(requireContext(), "$animalType added", Toast.LENGTH_SHORT).show()
-                    loadAnimals()
-                    dialog.dismiss()  // Close dialog on success
-                }
-                .addOnFailureListener {
-                    Toast.makeText(requireContext(), "Failed to add animal", Toast.LENGTH_SHORT).show()
-                }
-        }
-    }
 
 
     private fun loadAnimals() {

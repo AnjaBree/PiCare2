@@ -76,7 +76,7 @@
             android:textColor="#2D2D2D"
             android:textSize="14sp" />
 
-        <com.google.android.material.button.MaterialButton
+        <Button
             android:id="@+id/buttonSelectTime"
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:layout_width="match_parent"

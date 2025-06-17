@@ -14,9 +14,9 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.example.picare.R
 import com.example.picare.model.Reminder
 
-// ReminderAdapter now takes a list of Pair(documentId, Reminder)
+// ReminderAdapter now takes a MutableList so we can remove items dynamically
 class ReminderAdapter(
-    private val reminders: List<Pair<String, Reminder>>
+    private val reminders: MutableList<Pair<String, Reminder>>
 ) : RecyclerView.Adapter<ReminderAdapter.ReminderViewHolder>() {
 
     inner class ReminderViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -38,14 +38,15 @@ class ReminderAdapter(
         holder.title.text = reminder.animalName
         holder.description.text = reminder.reminderText
 
+        // Color based on timestamp
         val now = Timestamp.now()
-        val reminderTime = reminder.timestamp
-
-        if (reminderTime != null && reminderTime.toDate().before(now.toDate())) {
-            holder.cardView.setCardBackgroundColor(Color.parseColor("#A5D6A7")) // greenish
-        } else {
-            holder.cardView.setCardBackgroundColor(Color.GRAY)
-        }
+        reminder.timestamp?.let {
+            if (it.toDate().before(now.toDate())) {
+                holder.cardView.setCardBackgroundColor(Color.parseColor("#A5D6A7")) // greenish
+            } else {
+                holder.cardView.setCardBackgroundColor(Color.GRAY)
+            }
+        } ?: holder.cardView.setCardBackgroundColor(Color.GRAY)
 
         holder.buttonComplete.setOnClickListener {
             FirebaseFirestore.getInstance()
@@ -53,11 +54,24 @@ class ReminderAdapter(
                 .document(docId)
                 .delete()
                 .addOnSuccessListener {
-                    Toast.makeText(holder.itemView.context, "Reminder completed and removed!", Toast.LENGTH_SHORT).show()
-                    // Optionally: you can notify adapter here to refresh list if needed
+                    // Remove item from local list and notify adapter
+                    val pos = holder.adapterPosition
+                    if (pos != RecyclerView.NO_POSITION) {
+                        reminders.removeAt(pos)
+                        notifyItemRemoved(pos)
+                    }
+                    Toast.makeText(
+                        holder.itemView.context,
+                        "Reminder completed and removed!",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
                 .addOnFailureListener { e ->
-                    Toast.makeText(holder.itemView.context, "Failed to delete reminder: ${e.message}", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        holder.itemView.context,
+                        "Failed to delete reminder: ${e.message}",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
         }
     }

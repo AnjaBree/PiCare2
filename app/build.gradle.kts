@@ -43,8 +43,7 @@ android {
 }
 
 dependencies {
-    // Use Firebase BoM to manage versions of Firebase libraries
-    implementation(platform("com.google.firebase:firebase-bom:33.0.0"))
+
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
@@ -54,12 +53,9 @@ dependencies {
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
-    implementation(libs.firebase.auth)  // Assuming version is managed via BoM
     implementation(libs.androidx.activity)
-    implementation("com.google.android.material:material:1.9.0")
-
-    // Firebase Firestore without explicit version (managed by BoM)
-    implementation("com.google.firebase:firebase-firestore-ktx")
+    implementation(libs.firebase.auth)
+    implementation(libs.firebase.firestore)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
