@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="#FAFAFA"
+    android:padding="24dp"
+    tools:context=".ui.profile.ProfileFragment"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:background="@drawable/profile_card_bg"
+            android:padding="24dp"
+            android:elevation="4dp"
+            android:layout_margin="16dp">
+
+            <TextView
+                android:id="@+id/displayName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Name"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="#212121"
+                android:layout_marginBottom="8dp" />
+
+            <TextView
+                android:id="@+id/email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Email"
+                android:textSize="16sp"
+                android:textColor="#555555"
+                android:layout_marginBottom="24dp" />
+
+            <Button
+                android:id="@+id/logoutButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Logout"
+                android:backgroundTint="#EF5350"
+                android:textColor="#FFFFFF" />
+
+        </LinearLayout>
+    </FrameLayout>
+
